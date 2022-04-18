@@ -408,6 +408,7 @@ enum mob_ai {
 	AI_WAVEMODE,
 	AI_ABR,
 	AI_BIONIC,
+	AI_BOMB,
 	AI_MAX
 };
 
@@ -650,7 +651,14 @@ enum e_mapflag : int16 {
 	MF_NORENEWALDROPPENALTY,
 	MF_NOPETCAPTURE,
 	MF_NOBUYINGSTORE,
+	#ifdef BGEXTENDED
+		MF_NOECALL, // [BattleGround System]
+		MF_BG_CONSUME, // allows using BG consumables [Easycore]
+		MF_WOE_CONSUME, // allows using WoE consumables [Easycore]
+		MF_BG_TOPSCORE,
 	MF_MAX
+
+	#endif
 };
 
 /// Enum of damage types
@@ -780,7 +788,11 @@ struct map_data {
 	int16 m;
 	int16 xs,ys; // map dimensions (in cells)
 	int16 bxs,bys; // map dimensions (in blocks)
+#ifdef BGEXTENDED
+	int16 bgscore_lion, bgscore_eagle, bgscore_top; // Battleground ScoreBoard
+#else
 	int16 bgscore_lion, bgscore_eagle; // Battleground ScoreBoard
+#endif
 	int npc_num; // number total of npc on the map
 	int npc_num_area; // number of npc with a trigger area on the map
 	int npc_num_warp; // number of warp npc on the map

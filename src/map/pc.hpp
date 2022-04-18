@@ -393,6 +393,12 @@ struct map_session_data {
 		uint16 inventory_expansion_amount;
 		t_itemid laphine_synthesis;
 		t_itemid laphine_upgrade;
+		#ifdef BGEXTENDED
+				// BG eAmod
+				unsigned bg_afk : 1;
+				unsigned int bg_listen : 1;
+				unsigned int only_walk : 1;
+		#endif
 	} state;
 	struct {
 		unsigned char no_weapon_damage, no_magic_damage, no_misc_damage;
@@ -756,6 +762,11 @@ struct map_session_data {
 	const char* debug_file;
 	int debug_line;
 	const char* debug_func;
+#ifdef BGEXTENDED
+	unsigned short bg_kills; // Battleground Kill Count
+	int ballx;			// poringball X [Grenat]
+	int bally;			// poringball Y [Grenat]
+#endif
 
 	// Battlegrounds queue system [MasterOfMuppets]
 	int bg_id, bg_queue_id;
@@ -1224,7 +1235,7 @@ public:
 
 extern PlayerStatPointDatabase statpoint_db;
 
-/// Enum of Summoner Power of 
+/// Enum of Summoner Power of
 enum e_summoner_power_type {
 	SUMMONER_POWER_LAND = 0,
 	SUMMONER_POWER_LIFE,
@@ -1596,6 +1607,9 @@ void pc_show_questinfo(struct map_session_data *sd);
 void pc_show_questinfo_reinit(struct map_session_data *sd);
 
 bool pc_job_can_entermap(enum e_job jobid, int m, int group_lv);
+#ifdef BGEXTENDED
+int pc_update_last_action(struct map_session_data *sd);
+#endif
 
 #if defined(RENEWAL_DROP) || defined(RENEWAL_EXP)
 uint16 pc_level_penalty_mod( struct map_session_data* sd, e_penalty_type type, std::shared_ptr<s_mob_db> mob, mob_data* md = nullptr );
