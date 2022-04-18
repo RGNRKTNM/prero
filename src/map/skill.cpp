@@ -2065,7 +2065,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 					break;
 				if (!tsc->data[status])
 					continue;
-				
+
 				if (it.second->flag[SCF_NOBANISHINGBUSTER])
 					continue;
 
@@ -3100,7 +3100,7 @@ static int skill_magic_reflect(struct block_list* src, struct block_list* bl, in
  * @param skill_id: Target skill
  * @return	0: Skill is not a combo
  *			1: Skill is a normal combo
- *			2: Skill is combo that prioritizes auto-target even if val2 is set 
+ *			2: Skill is combo that prioritizes auto-target even if val2 is set
  * @author Panikon
  */
 int skill_is_combo(uint16 skill_id) {
@@ -3446,7 +3446,7 @@ void skill_attack_blow(struct block_list *src, struct block_list *dsrc, struct b
  *
  *        flag&0xF000 - Values from enum e_skill_display
  *        flag&0x3F0000 - Values from enum e_battle_check_target
- * 
+ *
  *        flag&0x1000000 - Return 0 if damage was reflected
  *-------------------------------------------------------------------------*/
 int64 skill_attack (int attack_type, struct block_list* src, struct block_list *dsrc, struct block_list *bl, uint16 skill_id, uint16 skill_lv, t_tick tick, int flag)
@@ -3521,7 +3521,7 @@ int64 skill_attack (int attack_type, struct block_list* src, struct block_list *
 					dmg.damage = battle_attr_fix(src, bl, pd->a_skill->damage, element, tstatus->def_ele, tstatus->ele_lv);
 				else
 					dmg.damage = pd->a_skill->damage; // Fixed damage
-				
+
 			}
 			else
 				dmg.damage = 1*pd->a_skill->div_;
@@ -3604,7 +3604,7 @@ int64 skill_attack (int attack_type, struct block_list* src, struct block_list *
 
 		if(tsc && tsc->data[SC_MAGICROD] && src == dsrc) {
 			int sp = skill_get_sp(skill_id,skill_lv);
-#ifndef RENEWAL 
+#ifndef RENEWAL
 			clif_skill_nodamage(bl,bl,SA_MAGICROD,skill_lv,1);
 #endif
 			dmg.damage = dmg.damage2 = 0;
@@ -5989,11 +5989,11 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 		else // Dimension not active? Activate the 2 second skill block penalty.
 			sc_start(src, &sd->bl, SC_NOVAEXPLOSING, 100, skill_lv, skill_get_time(skill_id, skill_lv));
 		break;
-		
+
 	case SP_SOULEXPLOSION:
 		if (!(tsc && (tsc->data[SC_SPIRIT] || tsc->data[SC_SOULGOLEM] || tsc->data[SC_SOULSHADOW] || tsc->data[SC_SOULFALCON] || tsc->data[SC_SOULFAIRY])) || tstatus->hp < 10 * tstatus->max_hp / 100) { // Requires target to have a soul link and more then 10% of MaxHP.
 			// With this skill requiring a soul link, and the target to have more then 10% if MaxHP, I wonder
-			// if the cooldown still happens after it fails. Need a confirm. [Rytech] 
+			// if the cooldown still happens after it fails. Need a confirm. [Rytech]
 			if (sd)
 				clif_skill_fail(sd, skill_id, USESKILL_FAIL_LEVEL, 0);
 			break;
@@ -6449,7 +6449,7 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 			clif_skill_damage(src,src,tick,status_get_amotion(src),0,-30000,1,skill_id,skill_lv,DMG_SINGLE);
 		}
 		break;
-	
+
 	case NPC_FATALMENACE:	// todo should it teleport the target ?
 		if( flag&1 )
 			skill_attack(BF_WEAPON,src,src,bl,skill_id,skill_lv,tick,flag);
@@ -6464,7 +6464,7 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 			clif_skill_damage(src,src,tick,status_get_amotion(src),0,-30000,1,skill_id,skill_lv,DMG_SINGLE);
 		}
 		break;
-	
+
 	case LG_PINPOINTATTACK:
 		if (skill_check_unit_movepos(5, src, bl->x, bl->y, 1, 1))
 			clif_blown(src);
@@ -6764,7 +6764,7 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 		break;
 
 	case SJ_FALLINGSTAR_ATK:
-		if (sd) { // If a player used the skill it will search for targets marked by that player. 
+		if (sd) { // If a player used the skill it will search for targets marked by that player.
 			if (tsc && tsc->data[SC_FLASHKICK] && tsc->data[SC_FLASHKICK]->val4 == 1) { // Mark placed by a player.
 				int8 i = 0;
 
@@ -8077,7 +8077,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 			return 1;
 		}
 
-		
+
 		// Mark the target.
 		if( sd ){
 			int8 count = MAX_SERVANT_SIGN;
@@ -9606,7 +9606,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 
 			if( (!f_sd && !m_sd) // if neither was found
 				|| (sd->status.party_id != 0 && //not in same party
-					((!f_sd || sd->status.party_id != f_sd->status.party_id) 
+					((!f_sd || sd->status.party_id != f_sd->status.party_id)
 					&& (!m_sd || sd->status.party_id != m_sd->status.party_id) //if both are online they should all be in same team
 					))
 				|| ((!f_sd || !check_distance_bl(&sd->bl, &f_sd->bl, AREA_SIZE)) //not in same screen
@@ -10134,7 +10134,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 					if ((dstsd = member.sd) != nullptr && sd != dstsd && !dstsd->state.autotrade && !pc_isdead(dstsd)) {
 						if (map_getmapflag(dstsd->bl.m, MF_NOWARP) && !map_flag_gvg2(dstsd->bl.m) && !bg)
 							continue;
-						if (!pc_job_can_entermap((enum e_job)dstsd->status.class_, src->m, dstsd->group_level))
+						if (!pc_job_can_entermap((enum e_job)dstsd->status.class_, src->m, pc_get_group_level(dstsd)))
 							continue;
 						if(map_getcell(src->m,src->x+dx[j],src->y+dy[j],CELL_CHKNOREACH))
 							dx[j] = dy[j] = 0;
@@ -10150,7 +10150,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 					if ((dstsd = g->member[i].sd) != NULL && sd != dstsd && !dstsd->state.autotrade && !pc_isdead(dstsd)) {
 						if (map_getmapflag(dstsd->bl.m, MF_NOWARP) && !map_flag_gvg2(dstsd->bl.m))
 							continue;
-						if (!pc_job_can_entermap((enum e_job)dstsd->status.class_, src->m, dstsd->group_level))
+						if (!pc_job_can_entermap((enum e_job)dstsd->status.class_, src->m, pc_get_group_level(dstsd)))
 							continue;
 						if(map_getcell(src->m,src->x+dx[j],src->y+dy[j],CELL_CHKNOREACH))
 							dx[j] = dy[j] = 0;
@@ -10778,7 +10778,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 					clif_skill_fail(sd,skill_id,USESKILL_FAIL_LEVEL,0);
 				break;
 			}
-			
+
 			if(status_isimmune(bl))
 				break;
 
@@ -11847,7 +11847,7 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 				}
 			}
 		}
-		break;	
+		break;
 
 	case KO_KAHU_ENTEN:
 	case KO_HYOUHU_HUBUKI:
@@ -12638,7 +12638,7 @@ static int8 skill_castend_id_check(struct block_list *src, struct block_list *ta
 			if (target->type == BL_SKILL) {
 				TBL_SKILL *su = (TBL_SKILL*)target;
 				if (!su || !su->group)
-					return USESKILL_FAIL_MAX;				
+					return USESKILL_FAIL_MAX;
 				if (skill_get_inf2(su->group->skill_id, INF2_ISTRAP))
 					return USESKILL_FAIL_MAX;
 			}
@@ -14569,7 +14569,7 @@ std::shared_ptr<s_skill_unit_group> skill_unitsetting(struct block_list *src, ui
 #else
 		val1 = 5 + 3 * skill_lv + status->dex / 10; // ASPD decrease
 		val2 = 5 + 3 * skill_lv + status->agi / 10; // Movement speed adjustment.
-#endif		
+#endif
 		if (sd) {
 			val1 += pc_checkskill(sd, DC_DANCINGLESSON);
 #ifdef RENEWAL
@@ -14875,7 +14875,7 @@ std::shared_ptr<s_skill_unit_group> skill_unitsetting(struct block_list *src, ui
 				break;
 			case WZ_WATERBALL:
 				//Check if there are cells that can be turned into waterball units
-				if (!sd || map_getcell(src->m, ux, uy, CELL_CHKWATER) 
+				if (!sd || map_getcell(src->m, ux, uy, CELL_CHKWATER)
 					|| (map_find_skill_unit_oncell(src, ux, uy, SA_DELUGE, NULL, 1)) != NULL || (map_find_skill_unit_oncell(src, ux, uy, NJ_SUITON, NULL, 1)) != NULL)
 					break; //Turn water, deluge or suiton into waterball cell
 				continue;
@@ -14973,7 +14973,7 @@ void ext_skill_unit_onplace(struct skill_unit *unit, struct block_list *bl, t_ti
  */
 static int skill_unit_onplace(struct skill_unit *unit, struct block_list *bl, t_tick tick)
 {
-	
+
 	struct block_list *ss; // Actual source that cast the skill unit
 	struct status_change *sc;
 	struct status_change_entry *sce;
@@ -16565,7 +16565,7 @@ int skill_check_pc_partner(struct map_session_data *sd, uint16 skill_id, uint16 
 	memset (p_sd, 0, sizeof(p_sd));
 	i = map_foreachinallrange(skill_check_condition_char_sub, &sd->bl, range, BL_PC, &sd->bl, &c, &p_sd, skill_id);
 
-	if ( skill_id != PR_BENEDICTIO && skill_id != AB_ADORAMUS && skill_id != WM_GREAT_ECHO && 
+	if ( skill_id != PR_BENEDICTIO && skill_id != AB_ADORAMUS && skill_id != WM_GREAT_ECHO &&
 		!(skill_id >= TR_GEF_NOCTURN && skill_id <= TR_PRON_MARCH)) //Apply the average lv to encore skills.
 		*skill_lv = (i+(*skill_lv))/(c+1); //I know c should be one, but this shows how it could be used for the average of n partners.
 	return c;
@@ -16706,7 +16706,7 @@ static bool skill_check_condition_sc_required(struct map_session_data *sd, unsig
 	return true;
 }
 
-/** 
+/**
  * Check skill condition when cast begin
  * For ammo, only check if the skill need ammo
  * For checking ammo requirement (type and amount) will be skill_check_condition_castend
@@ -17303,7 +17303,7 @@ bool skill_check_condition_castbegin(struct map_session_data* sd, uint16 skill_i
 				int16 sx = sd->bl.x;
 				int16 sy = sd->bl.y;
 				uint8 dir = (unit_getdir(&sd->bl)) % 8;
-				
+
 				switch (dir) {
 					case 0: case 8: sy++; break;
 					case 1: sx--; sy++; break;
@@ -19961,7 +19961,7 @@ bool skill_check_shadowform(struct block_list *bl, int64 damage, int hit)
 	if( sc && sc->data[SC__SHADOWFORM] ) {
 		struct block_list *src = map_id2bl(sc->data[SC__SHADOWFORM]->val2);
 
-		if( !src || src->m != bl->m ) { 
+		if( !src || src->m != bl->m ) {
 			status_change_end(bl, SC__SHADOWFORM, INVALID_TIMER);
 			return false;
 		}
@@ -20751,7 +20751,7 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 				break;
 
 			default:
-				if (group->val2 == 1 && (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
+				if (group->val2 == 1 && (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 ||
 					group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2)) {
 					// Deal damage before expiration
 					break;
@@ -20807,7 +20807,7 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 				}
 				break;
 			default:
-				if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
+				if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 ||
 					group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2) {
 					if (group->val2 == 0 && (DIFF_TICK(tick, group->tick) >= group->limit - group->interval || DIFF_TICK(tick, group->tick) >= unit->limit - group->interval)) {
 						// Unit will expire the next interval, start dropping Meteor
@@ -20848,7 +20848,7 @@ static int skill_unit_timer_sub(DBKey key, DBData *data, va_list ap)
 				group->bl_flag= BL_NUL;
 			}
 		}
-		else if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 || 
+		else if (group->skill_id == WZ_METEOR || group->skill_id == SU_CN_METEOR || group->skill_id == SU_CN_METEOR2 ||
 			group->skill_id == AG_VIOLENT_QUAKE_ATK || group->skill_id == AG_ALL_BLOOM_ATK || group->skill_id == AG_ALL_BLOOM_ATK2) {
 			skill_delunit(unit);
 			return 0;
