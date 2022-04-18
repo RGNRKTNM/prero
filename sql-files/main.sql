@@ -288,7 +288,7 @@ CREATE TABLE IF NOT EXISTS `char` (
   KEY `party_id` (`party_id`),
   KEY `guild_id` (`guild_id`),
   KEY `online` (`online`)
-) ENGINE=MyISAM AUTO_INCREMENT=150000; 
+) ENGINE=MyISAM AUTO_INCREMENT=150000;
 
 --
 -- Table structure for table `char_reg_num`
@@ -337,7 +337,7 @@ CREATE TABLE IF NOT EXISTS `charlog` (
   `hair_color` int(11) NOT NULL default '0',
   PRIMARY KEY (`id`),
   KEY `account_id` (`account_id`)
-) ENGINE=MyISAM; 
+) ENGINE=MyISAM;
 
 --
 -- Table structure for table `clan`
@@ -691,7 +691,7 @@ CREATE TABLE IF NOT EXISTS `hotkey` (
   PRIMARY KEY (`char_id`,`hotkey`)
 ) ENGINE=MyISAM;
 
--- 
+--
 -- Table structure for table `interlog`
 --
 
@@ -785,7 +785,7 @@ CREATE TABLE IF NOT EXISTS `login` (
   PRIMARY KEY  (`account_id`),
   KEY `name` (`userid`),
   UNIQUE KEY `web_auth_token_key` (`web_auth_token`)
-) ENGINE=MyISAM AUTO_INCREMENT=2000000; 
+) ENGINE=MyISAM AUTO_INCREMENT=2000000;
 
 -- added standard accounts for servers, VERY INSECURE!!!
 -- inserted into the table called login which is above
@@ -1101,4 +1101,115 @@ CREATE TABLE IF NOT EXISTS `vendings` (
   `sit` CHAR( 1 ) NOT NULL DEFAULT '1',
   `autotrade` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `ranking_bg_bomber`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_bomber` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_conquest`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_conquest` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_inferno`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_inferno` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_captureflag`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_captureflag` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_deathmatch`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_deathmatch` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_stonecontrol`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_stonecontrol` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_poringball`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_poringball` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_rush`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_rush` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_bossnia`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_bossnia` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_domination`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_domination` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
+) ENGINE=MyISAM;
+DROP TABLE IF EXISTS `ranking_bg_eyeofstorm`;
+CREATE TABLE IF NOT EXISTS `ranking_bg_eyeofstorm` (
+`Char_ID` int(11) unsigned NOT NULL DEFAULT '0',
+`PlayerName` varchar(255) NULL DEFAULT '',
+`Kills` varchar(255) NULL DEFAULT '',
+`Deaths` varchar(255) NULL DEFAULT '',
+`Victory` varchar(255) NULL DEFAULT '',
+`Defeat` varchar(255) NULL DEFAULT '',
+PRIMARY KEY (`Char_ID`)
 ) ENGINE=MyISAM;

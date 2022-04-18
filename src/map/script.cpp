@@ -20650,24 +20650,6 @@ int viewpointmap_sub(struct block_list *bl, va_list ap)
 	return 0;
 }
 
-BUILDIN_FUNC(viewpointmap)
-{
-	int type, x, y, id, color, m;
-	const char *map_name;
-
-	map_name = script_getstr(st, 2);
-	if ((m = map_mapname2mapid(map_name)) < 0)
-		return SCRIPT_CMD_FAILURE; // Invalid Map
-
-	type = script_getnum(st, 3);
-	x = script_getnum(st, 4);
-	y = script_getnum(st, 5);
-	id = script_getnum(st, 6);
-	color = script_getnum(st, 7);
-
-	map_foreachinmap(viewpointmap_sub, m, BL_PC, st->oid, type, x, y, id, color);
-	return SCRIPT_CMD_SUCCESS;
-}
 
 BUILDIN_FUNC(bgannounce)
 {
@@ -27049,7 +27031,6 @@ struct script_function buildin_func[] = {
 	BUILDIN_DEF(bg_getkafrapoints, "ii"),
 	BUILDIN_DEF(bg_reward, "iiiiisiii"),
 	BUILDIN_DEF(bgannounce, "s?????"),
-	BUILDIN_DEF(viewpointmap, "siiiii"),
 	BUILDIN_DEF(bg_monster_reveal,"iii"),
 	BUILDIN_DEF(donpceventall,"s"),
 	BUILDIN_DEF2(flagemblem, "flagemblembg", "ii"),

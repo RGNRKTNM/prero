@@ -78,7 +78,7 @@ OnEnable:
 	enablenpc "#A_camp_start02";
 	end;
 OnDisable:
-	disablenpc "#A_camp_start03";
+	disablenpc "#A_camp_start02";
 	end;
 OnTouch:
 	set Bat_Team,1;
